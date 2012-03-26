@@ -77,4 +77,23 @@ public class SpamCheck extends ChatCheck {
         else
             return super.getParameter(wildcard, player);
     }
+
+private HashMap<Player, String> chat = new HashMap<Player, String>
+
+@EventHandler
+public void onPlayerChat(PlayerChatEvent e) {
+Player p = e.getPlayer();
+String message = e.getMessage();
+
+e.setCanseled(true);
+//sender til players
+
+if (chat.get(p) == message) {
+this.plugin.broadcastAll(ChatColor.WHITE + p.getName() + ChatColor.DARK_GREEN + " ble kicket for å spamme chatten.");
+p.kickPlayer("Du ble kicket for å spamme chatten.");
+}
+
+}
+
+
 }
